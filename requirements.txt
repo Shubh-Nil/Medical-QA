@@ -1,0 +1,16 @@
+# CPU-friendly base
+torch>=2.3
+transformers>=4.40
+accelerate>=0.28
+datasets>=2.18
+sentence-transformers>=2.7
+faiss-cpu>=1.7.4
+peft>=0.10
+bitsandbytes>=0.43 ; platform_system != "Windows"
+pydantic>=2.6
+requests>=2.31
+PyYAML>=6.0
+tqdm>=4.66
+pypdf>=4.2
+# optional parsing
+beautifulsoup4>=4.12

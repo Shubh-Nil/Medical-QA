@@ -1,0 +1,17 @@
+# Example QLoRA config (edit paths/model names to your environment)
+base_model: meta-llama/Llama-2-7b-chat-hf
+data_path: data/finetune_examples.jsonl
+output_dir: outputs/qlora-llama2-7b-medqa
+max_seq_len: 2048
+
+batch_size: 1
+grad_accum: 16
+epochs: 2
+lr: 2e-4
+logging_steps: 10
+save_steps: 200
+
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules: ["q_proj","k_proj","v_proj","o_proj","gate_proj","up_proj","down_proj"]
