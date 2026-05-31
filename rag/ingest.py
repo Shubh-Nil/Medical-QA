@@ -18,7 +18,7 @@ def chunking(dataset: dict, subset: str) -> list[dict]:
                 "meta": {
                     "pubid": data['pubid'],
                     "labels": section,
-                    "meshes": item['meshes'],
+                    "meshes": ", ".join(item['meshes']),
                     "subset": subset
                 }
             }

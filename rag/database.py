@@ -1,6 +1,8 @@
+import torch
 from sentence_transformers import SentenceTransformer
 import chromadb
 
+device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 class search_result:
     def __init__(self, text:str, meta:dict, score:float):
@@ -15,7 +17,7 @@ class search_result:
 
 class vector_database:
     def __init__(self, model_name: str, database_path: str):
-        self.model = SentenceTransformer(model_name)
+        self.model = SentenceTransformer(model_name).to(device)
         self.database = chromadb.PersistentClient(path=database_path).get_or_create_collection(name="PubMedQA")
 
     def add(self, chunks: list[dict]):

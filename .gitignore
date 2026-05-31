@@ -15,3 +15,4 @@ venv/
 outputs/
 runs/
 data/cache/
+logs/

@@ -1,23 +1,15 @@
-from ingest import *
-from database import *
+import argparse
+from ingest import load_PubMedQA, chunking
+from database import vector_database
 
 
 if __name__ == '__main__':
-    print("Enter the subset you want to add to the database")
-    print("1 - Labeled")
-    print("2 - Artificially labeled")
-    print("3 - Unlabeled")
-    choice = int(input("Enter the number"))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--subset", type=str, required=True, choices=["pqa_labeled", "pqa_artificial", "pqa_unlabeled"], help="PubMedQA subset to ingest")
+    args = parser.parse_args()
 
-    if choice==1: subset = "pqa_labeled"
-    elif choice==2: subset = "pqa_artificial"
-    elif choice==3: subset = "pqa_unlabeled"
-    else: 
-        print("Incorrect choice selected")
-        exit()
-
-    dataset = load_PubMedQA(subset)
-    chunks = chunking(dataset, subset)
+    dataset = load_PubMedQA(args.subset)
+    chunks = chunking(dataset, args.subset)
     
     database = vector_database(model_name="sentence-transformers/all-MiniLM-L6-v2",
                                database_path="database/chroma")

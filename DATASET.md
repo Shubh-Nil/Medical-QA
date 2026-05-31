@@ -22,3 +22,8 @@
 #     final_decision                   str         {Yes/ No/ Maybe}  (for "pqa_labeled", it is annotated by a human)
 #                                                                    (for "pqa_artificial", it is annotated by rules)
 # =============================================================================
+
+
+
+#     "pqa_labeled"      1,000 examples     each example contain 3-4 contexts (chunks)    total<=3392 chunks
+
